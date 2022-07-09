@@ -32,6 +32,7 @@ class Issue(models.Model):
     start_work_time = models.TimeField(null=True, blank=True)
     end_work_time = models.TimeField(null=True, blank=True)
     hourly_rate = models.DecimalField(max_digits=11, decimal_places=2, null=True, blank=True)
+    device = models.ForeignKey(Device, on_delete=models.CASCADE, related_name="issues", null=False, blank=True)
     client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name="issues", null=False, blank=True)
     technician = models.ForeignKey(Technician, on_delete=models.SET_NULL, related_name="issues", null=True, blank=True)
     updated = models.DateTimeField(auto_now=True)

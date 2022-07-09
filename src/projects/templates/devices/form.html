@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h2>
+            Add Device
+        </h2>
+    </div>
+    <div class="row">
+
+        <div class="col">
+            <form method="POST" novalidate>
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ form.brand.errors }}
+                    <label for="{{ form.brand.id_for_label }}">Brand:</label>
+                    {{ form.brand }}
+                </div>
+                <div class="mb-3">
+                    {{ form.model.errors }}
+                    <label for="{{ form.model.id_for_label }}">Model:</label>
+                    {{ form.model }}
+                </div>
+                <div class="mb-3">
+                    {{ form.operating_system.errors }}
+                    <label for="{{ form.operating_system.id_for_label }}">OS:</label>
+                    {{ form.operating_system }}
+                </div>
+                <div class="mb-3">
+                    {{ form.about.errors }}
+                    <label for="{{ form.about.id_for_label }}">About:</label>
+                    {{ form.about }}
+                </div>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

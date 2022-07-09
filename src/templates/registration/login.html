@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% load static %} 
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>Log in</h2>
+      <form method="post" novalidate>
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}" />
+        <div class="mb-3">
+          <label for="id_username">Username</label>
+          <input type="text" class="form-control" id="id_username" name="username" />
+        </div>
+        <div class="mb-3">
+          <label for="id_password">Password</label>
+          <input
+            id="id_password"
+            name="password"
+            type="password"
+            class="form-control"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Log in</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

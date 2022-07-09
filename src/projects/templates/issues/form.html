@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h2>
+            Add Issue
+        </h2>
+    </div>
+    <div class="row">
+
+        <div class="col">
+            <form method="POST" novalidate>
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ form.subject.errors }}
+                    <label for="{{ form.subject.id_for_label }}">Subject:</label>
+                    {{ form.subject }}
+                </div>
+                <div class="mb-3">
+                    {{ form.explanation.errors }}
+                    <label for="{{ form.explanation.id_for_label }}">Explanation:</label>
+                    {{ form.explanation }}
+                </div>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

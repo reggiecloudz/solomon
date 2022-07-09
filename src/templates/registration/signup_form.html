@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <h2 class="">Sign up as a {{ user_type }}</h2>
+        <form class="mb-5" method="post" novalidate enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-row my-2">
+            <div class="col">
+              {{ form.name.errors }}
+              <label for="{{ form.name.id_for_label }}">Name:</label>
+              {{ form.name }}
+            </div>
+            <div class="col">
+              {{ form.email.errors }}
+              <label for="{{ form.email.id_for_label }}">Email:</label>
+              {{ form.email }}
+            </div>
+          </div>
+          <div class="form-row my-2">
+            <div class="col">
+              {{ form.password1.errors }}
+              <label for="{{ form.password1.id_for_label }}">Password:</label>
+              {{ form.password1 }}
+            </div>
+            <div class="col">
+              {{ form.password2.errors }}
+              <label for="{{ form.password2.id_for_label }}"
+                >Password Confirmation:</label
+              >
+              {{ form.password2 }}
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg btn-block">
+            Sign up
+          </button>
+        </form>
+      </div>
+    </div>
+</div>
+{% endblock content %}
