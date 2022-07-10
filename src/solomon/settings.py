@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'accounts',
     'articles',
     'pages',
-    'projects',
     'questions',
+    'repairs',
 ]
 
 MIDDLEWARE = [

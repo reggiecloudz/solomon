@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table caption-top">
+                        <caption>List of repairs</caption>
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Client</th>
+                            <th scope="col">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for repair in repairs %}
+                            <tr>
+                                <th scope="row">{{ repair.id }}</th>
+                                <td>{{ repair.subject }}</td>
+                                <td>{{ repair.client.identity.name }}</td>
+                                <td>{{ repair.status }}</td>
+                              </tr>
+                            {% endfor %}
+                        </tbody>
+                      </table>
+                  </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

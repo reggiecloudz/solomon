@@ -20,7 +20,7 @@
             aria-controls="home"
             aria-selected="true"
           >
-            Issues
+            Repairs
           </button>
         </li>
         <li class="nav-item" role="presentation">
@@ -104,8 +104,8 @@
           role="tabpanel"
           aria-labelledby="home-tab"
         >
-        {% for issue in issues %}
-          <p>{{ issue.subject }}</p>
+        {% for repair in repairs %}
+          <p>{{ repair.subject }}</p>
         {% endfor %}
         </div>
         <div
@@ -116,7 +116,7 @@
         >
           <a href="{% url 'devices:add_device' %}">Add Device</a>
           {% for device in devices %}
-            <p>{{ device.brand }} - <a href="{% url 'issues:add_issue' device.pk %}">Create Issue</a></p>
+            <p>{{ device.brand }} - <a href="{% url 'repairs:add_repair' device.pk %}">Create Repair</a></p>
           {% endfor %}
         </div>
         <div

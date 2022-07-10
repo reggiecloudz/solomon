@@ -3,10 +3,11 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic.edit import CreateView
 
-from accounts.decorators import client_required
+from accounts.decorators import client_required, technician_required
 from accounts.forms.client import ClientSignUpForm
 from accounts.forms.technician import TechnicianSignUpForm
 from accounts.models import Client, User, Technician
+from repairs.models import Repair
 
 class ClientSignUpView(CreateView):
     model = User
@@ -40,3 +41,12 @@ class TechnicianSignUpView(CreateView):
 def logout_view(request):
     logout(request)
     return redirect('home')
+
+@login_required
+@technician_required
+def technician_workspace(request):
+    repairs = Repair.objects.all()
+    data = {
+        'repairs': repairs,
+    }
+    return render(request, 'technicians/workspace.html', data)

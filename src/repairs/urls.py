@@ -1,12 +1,12 @@
 from django.urls import include, path
 
-from .views import add_device, add_issue
+from .views import add_device, add_repair
 
 urlpatterns = [
     path('devices/', include(([
         path('add/', add_device, name='add_device'),
     ], 'devices'))),
-     path('issues/', include(([
-        path('add/<int:pk>/', add_issue, name='add_issue'),
-    ], 'issues'))),
+     path('repairs/', include(([
+        path('add/<int:pk>/', add_repair, name='add_repair'),
+    ], 'repairs'))),
 ]
