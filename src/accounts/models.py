@@ -1,3 +1,4 @@
+from hashlib import blake2b
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.urls import reverse
@@ -78,6 +79,9 @@ class Technician(models.Model):
     id = models.UUIDField(primary_key=True, unique=True,
                           default=uuid.uuid4, editable=False)
     identity = models.OneToOneField(User, on_delete=models.CASCADE, related_name="technician", null=False, blank=True)
+    # [{'service', 'rate',}]
+    # Technician.objects.filter(service_rates__contains=[{'service': 'System updates'}])
+    service_rates = models.JSONField(null=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 

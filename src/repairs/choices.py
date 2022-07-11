@@ -3,6 +3,8 @@ REPAIR_STATUS_CHOICES = (
     ('Review', 'Review'),
     ('Accepted', 'Accepted'),
     ('Declined', 'Declined'),
+    ('Agreed', 'Agreed'),
+    ('Disagreed', 'Disagreed'),
     ('Waiting', 'Waiting'),
     ('Working', 'Working'),
     ('Completed', 'Completed'),

@@ -4,10 +4,10 @@ from django.forms.models import model_to_dict
 from django.http import JsonResponse
 
 from repairs.forms.devices import DeviceForm
-from repairs.forms.repairs import RepairForm
-from repairs.models import Device
+from repairs.forms.repairs import RepairForm, AcceptOrDeclineForm
+from repairs.models import Device, Repair
 from accounts.models import Client
-from accounts.decorators import client_required
+from accounts.decorators import client_required, technician_required
 
 # Create your views here.
 @login_required
@@ -26,7 +26,7 @@ def add_device(request):
 
 @login_required
 @client_required
-def add_repair(request, pk):
+def request_repair(request, pk):
     device = Device.objects.get(pk=pk)
     if request.method == 'POST':
         form = RepairForm(request.POST)
@@ -40,3 +40,25 @@ def add_repair(request, pk):
     else:
         form = RepairForm()
     return render(request, 'repairs/form.html', {'form': form})
+
+@login_required
+@technician_required
+def review_repair(request, pk):
+    repair = Repair.objects.get(pk=pk)
+    if (repair.status == 'Submitted'):
+        repair.status = 'Review'
+        repair.save()
+    if request.method == 'POST':
+        form = AcceptOrDeclineForm(request.POST, instance=repair)
+        if form.is_valid():
+            c = form.save(commit=False)
+            c.technician = request.user.technician
+            c.save()
+            return redirect('technician_workspace')
+    form = AcceptOrDeclineForm(instance=repair)
+    data = {
+        'repair': repair,
+        'form': form,
+    }
+
+    return render(request, 'repairs/review.html', data)

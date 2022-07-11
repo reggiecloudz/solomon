@@ -116,7 +116,7 @@
         >
           <a href="{% url 'devices:add_device' %}">Add Device</a>
           {% for device in devices %}
-            <p>{{ device.brand }} - <a href="{% url 'repairs:add_repair' device.pk %}">Create Repair</a></p>
+            <p>{{ device.brand }} - <a href="{% url 'repairs:request_repair' device.pk %}">Create Repair</a></p>
           {% endfor %}
         </div>
         <div

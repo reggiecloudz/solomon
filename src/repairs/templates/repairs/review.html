@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <header class="row">
+            <div class="col">
+                <h1>{{ repair.subject }}</h1>
+                <p>{{ repair.explanation }}</p>
+            </div>
+        </header>
+
+        <div class="row">
+            <form method="POST">
+                {% csrf_token %}
+                {% for choice in form.status %}
+                <div class="form-check">
+                    {{ choice.tag }}
+                    <label class="form-check-label" for="{{ choice.tag.id_for_label }}">
+                        {{ choice.choice_label }}
+                    </label>
+                </div>
+                {% endfor %}
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

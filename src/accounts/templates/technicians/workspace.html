@@ -19,7 +19,7 @@
                             {% for repair in repairs %}
                             <tr>
                                 <th scope="row">{{ repair.id }}</th>
-                                <td>{{ repair.subject }}</td>
+                                <td><a href="{% url 'repairs:review_repair' repair.id %}">{{ repair.subject }}</a></td>
                                 <td>{{ repair.client.identity.name }}</td>
                                 <td>{{ repair.status }}</td>
                               </tr>
