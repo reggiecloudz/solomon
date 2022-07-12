@@ -104,9 +104,43 @@
           role="tabpanel"
           aria-labelledby="home-tab"
         >
-        {% for repair in repairs %}
-          <p>{{ repair.subject }}</p>
-        {% endfor %}
+          <div class="table-responsive">
+            <table class="table caption-top">
+              <caption>
+                List of repairs
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Subject</th>
+                  <th scope="col">Technician</th>
+                  <th scope="col">Process</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for repair in repairs %}
+                <tr>
+                  <th scope="row">{{ repair.id }}</th>
+                  <td>
+                    {{ repair.subject }}
+                  </td>
+                  <td>{{ repair.technician.identity.name }}</td>
+                  {% if repair.status == 'Accepted' %}
+                    <td>
+                      <!-- Button trigger modal -->
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        View Offer
+                      </button>
+                    </td>
+
+                  {% else %}
+                    <td>{{ repair.status }}</td>
+                  {% endif %}
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
         </div>
         <div
           class="tab-pane fade"
@@ -116,7 +150,12 @@
         >
           <a href="{% url 'devices:add_device' %}">Add Device</a>
           {% for device in devices %}
-            <p>{{ device.brand }} - <a href="{% url 'repairs:request_repair' device.pk %}">Create Repair</a></p>
+          <p>
+            {{ device.brand }} -
+            <a href="{% url 'repairs:request_repair' device.pk %}"
+              >Create Repair</a
+            >
+          </p>
           {% endfor %}
         </div>
         <div
@@ -151,6 +190,25 @@
         >
           ...
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

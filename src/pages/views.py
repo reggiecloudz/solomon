@@ -1,5 +1,3 @@
-from http import client
-import re
 from django.shortcuts import render, redirect
 from repairs.models import Device, Repair
 

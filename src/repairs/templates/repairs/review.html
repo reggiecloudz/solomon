@@ -12,6 +12,11 @@
         <div class="row">
             <form method="POST">
                 {% csrf_token %}
+                <div class="mb-3">
+                    {{ form.hourly_rate.errors }}
+                    <label for="{{ form.hourly_rate.id_for_label }}">Rate:</label>
+                    {{ form.hourly_rate }}
+                </div>
                 {% for choice in form.status %}
                 <div class="form-check">
                     {{ choice.tag }}

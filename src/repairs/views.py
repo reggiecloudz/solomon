@@ -4,7 +4,7 @@ from django.forms.models import model_to_dict
 from django.http import JsonResponse
 
 from repairs.forms.devices import DeviceForm
-from repairs.forms.repairs import RepairForm, AcceptOrDeclineForm
+from repairs.forms.repairs import RepairForm, OfferForm
 from repairs.models import Device, Repair
 from accounts.models import Client
 from accounts.decorators import client_required, technician_required
@@ -49,13 +49,13 @@ def review_repair(request, pk):
         repair.status = 'Review'
         repair.save()
     if request.method == 'POST':
-        form = AcceptOrDeclineForm(request.POST, instance=repair)
+        form = OfferForm(request.POST, instance=repair)
         if form.is_valid():
             c = form.save(commit=False)
             c.technician = request.user.technician
             c.save()
             return redirect('technician_workspace')
-    form = AcceptOrDeclineForm(instance=repair)
+    form = OfferForm(instance=repair)
     data = {
         'repair': repair,
         'form': form,
