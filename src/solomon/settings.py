@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'articles',
     'pages',
     'questions',
-    'incidents',
     'assets',
+    'incidents',
     'troubleshooting',
 ]
 

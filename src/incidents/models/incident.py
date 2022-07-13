@@ -4,7 +4,7 @@ from django.utils.translation import gettext as _
 
 from assets.models import Device
 
-from .choices import INCIDENT_STATUS_CHOICES
+from incidents.choices import INCIDENT_STATUS_CHOICES
 from accounts.models import Client, Technician
 
 class Incident(models.Model):
