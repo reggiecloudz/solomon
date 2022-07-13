@@ -1,6 +1,6 @@
 from django import forms
 
-from repairs.models import Device
+from assets.models import Device
 
 class DeviceForm(forms.ModelForm):
     brand = forms.CharField(min_length=1, max_length=60, widget=forms.TextInput(

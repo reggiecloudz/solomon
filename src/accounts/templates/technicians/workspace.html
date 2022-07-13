@@ -5,7 +5,7 @@
       <div class="table-responsive">
         <table class="table caption-top">
           <caption>
-            List of repairs
+            List of incidents
           </caption>
           <thead>
             <tr>
@@ -16,16 +16,16 @@
             </tr>
           </thead>
           <tbody>
-            {% for repair in repairs %}
+            {% for incident in incidents %}
             <tr>
-              <th scope="row">{{ repair.id }}</th>
+              <th scope="row">{{ incident.id }}</th>
               <td>
-                <a href="{% url 'repairs:review_repair' repair.id %}"
-                  >{{ repair.subject }}</a
+                <a href="{% url 'incidents:review_repair' repair.id %}"
+                  >{{ incident.subject }}</a
                 >
               </td>
-              <td>{{ repair.client.identity.name }}</td>
-              <td>{{ repair.status }}</td>
+              <td>{{ incident.client.identity.name }}</td>
+              <td>{{ incident.status }}</td>
             </tr>
             {% endfor %}
           </tbody>

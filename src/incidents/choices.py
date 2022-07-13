@@ -1,4 +1,4 @@
-REPAIR_STATUS_CHOICES = (
+INCIDENT_STATUS_CHOICES = (
     ('Submitted', 'Submitted'),
     ('Review', 'Review'),
     ('Accepted', 'Accepted'),

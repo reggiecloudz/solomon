@@ -30,7 +30,7 @@ class Article(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         return super().save(*args, **kwargs)
-    
+
 class Comment(models.Model):
     content = models.TextField(_("content"), null=False, blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='comments', editable=False, blank=True, null=False)

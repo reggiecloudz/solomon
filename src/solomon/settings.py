@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'articles',
     'pages',
     'questions',
-    'repairs',
+    'incidents',
+    'assets',
+    'troubleshooting',
 ]
 
 MIDDLEWARE = [

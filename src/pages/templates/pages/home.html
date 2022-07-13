@@ -118,14 +118,14 @@
                 </tr>
               </thead>
               <tbody>
-                {% for repair in repairs %}
+                {% for incident in incidents %}
                 <tr>
-                  <th scope="row">{{ repair.id }}</th>
+                  <th scope="row">{{ incident.id }}</th>
                   <td>
-                    {{ repair.subject }}
+                    {{ incident.subject }}
                   </td>
-                  <td>{{ repair.technician.identity.name }}</td>
-                  {% if repair.status == 'Accepted' %}
+                  <td>{{ incident.technician.identity.name }}</td>
+                  {% if incident.status == 'Accepted' %}
                     <td>
                       <!-- Button trigger modal -->
                       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -134,7 +134,7 @@
                     </td>
 
                   {% else %}
-                    <td>{{ repair.status }}</td>
+                    <td>{{ incident.status }}</td>
                   {% endif %}
                 </tr>
                 {% endfor %}
