@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'assets',
     'incidents',
     'troubleshooting',
+    'documentation',
 ]
 
 MIDDLEWARE = [
