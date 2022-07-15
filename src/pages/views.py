@@ -27,6 +27,6 @@ def forplay(request):
         'description': description
     }
     # new_item = {'key5': 'value5', 'timestamp': datetime.now().__str__() }
-    # description.display_type.insert(0, json.dumps(new_item))
+    # description.display_type.insert(0, new_item)
     # description.save()
     return render(request, template_name, data)

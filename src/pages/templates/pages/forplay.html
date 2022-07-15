@@ -5,12 +5,11 @@
     <div class="row">
         <div class="col">
             <h1>{{ description.device.brand }}</h1>
-
-            <p>
-            {% for item in description.display_type %}
-                {{ item }}<br/>
+            {% comment %} sort(reverse=true, attribute="age") {% endcomment %}
+            {% for item in description.display_type|sort(attribute='timestamp') %}
+                <p>{{item.key5}}</p>
+                <p>{{item.timestamp}}</p>
             {% endfor %}
-            </p>
         </div>
     </div>
 </div>
