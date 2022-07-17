@@ -10,7 +10,8 @@ from incidents.choices import PRIORITY_CHOICES, JOB_STATUS_CHOICES
 class Job(models.Model):
     label = models.CharField(_("label"), max_length=75, null=False, blank=True)
     priority = models.CharField(_("priority"), choices=PRIORITY_CHOICES, max_length=20, null=False, blank=True)
-    status = models.CharField(_("status"), choices=PRIORITY_CHOICES, default="Created", max_length=20, null=False, blank=True)
+    status = models.CharField(_("status"), choices=JOB_STATUS_CHOICES, default="Created", max_length=20, null=False, blank=True)
+    # hours_worked = 
     support_request = models.OneToOneField(SupportRequest, on_delete=models.SET_NULL, related_name="job", null=False, blank=True)
     # resource, url, title, description
     documentation = models.JSONField(default=list, null=True, blank=True)
@@ -19,6 +20,7 @@ class Job(models.Model):
     technician = models.ForeignKey(Technician, on_delete=models.CASCADE, related_name="jobs", null=False, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+    completed = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         verbose_name = _("job")

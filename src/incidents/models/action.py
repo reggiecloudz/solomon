@@ -10,11 +10,12 @@ class Action(models.Model):
     is_complete = models.BooleanField(default=False, null=False, blank=True)
     is_milestone = models.BooleanField(default=False, null=False, blank=True)
     start_time = models.DateTimeField(null=True, blank=True)
-    deadline = models.DateField(null=True, blank=True)
+    deadline = models.DateTimeField(null=True, blank=True)
     solution = models.ForeignKey(Solution, on_delete=models.CASCADE, related_name="actions", null=False, blank=True)
     technician = models.ForeignKey(Technician, on_delete=models.SET_NULL, related_name="actions", null=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+    completed = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         verbose_name = _("action")

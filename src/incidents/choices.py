@@ -3,6 +3,7 @@ SUPPORT_REQUEST_STATUS_CHOICES = (
     ('Review', 'Review'),
     ('Accepted', 'Accepted'),
     ('Declined', 'Declined'),
+    ('Offer', 'Offer'),
     ('Agreed', 'Agreed'),
     ('Disagreed', 'Disagreed'),
     ('Scheduled', 'Scheduled'),
