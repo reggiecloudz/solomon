@@ -1,12 +1,16 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext as _
-from incidents.models import Incident
+from assets.models import Device, device
+
 
 class Part(models.Model):
     brand = models.CharField(max_length=100, null=False, blank=True)
     model = models.CharField(max_length=100, null=False, blank=True)
-    incident = models.ForeignKey(Incident, on_delete=models.CASCADE, related_name='parts', null=False, blank=True)
+    device = models.ForeignKey(Device, on_delete=models.CASCADE, related_name='parts', null=False, blank=True)
+    cost = models.DecimalField(_("cost"), max_digits=5, decimal_places=2, null=True, blank=True)
+    # resource, url, title, description
+    documentation = models.JSONField(default=list, null=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 

@@ -2,10 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
 from assets.models import Device
-from incidents.forms import IncidentForm, AcceptOrDeclineForm
-from incidents.models import Incident
 from accounts.decorators import client_required, technician_required
 
+'''
 @login_required
 @client_required
 def report_incident(request, pk):
@@ -43,3 +42,4 @@ def review_incident(request, pk):
         'form': form,
     }
     return render(request, 'incidents/review.html', data)
+'''

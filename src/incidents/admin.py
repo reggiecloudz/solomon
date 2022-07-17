@@ -1,5 +1,25 @@
 from django.contrib import admin
 
-from .models import Incident
+from incidents.models import (
+    Action, 
+    Appointment, 
+    Evaluation, 
+    Implementation, 
+    Job, 
+    ProblemDefinition, 
+    RootCause, 
+    Solution, 
+    SupportRequest, 
+    Troubleshooting
+)
 
-admin.site.register(Incident)
+admin.site.register(Action)
+admin.site.register(Appointment)
+admin.site.register(Evaluation)
+admin.site.register(Implementation)
+admin.site.register(Job)
+admin.site.register(ProblemDefinition)
+admin.site.register(RootCause)
+admin.site.register(Solution)
+admin.site.register(SupportRequest)
+admin.site.register(Troubleshooting)

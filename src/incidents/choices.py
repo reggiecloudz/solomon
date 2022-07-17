@@ -1,14 +1,26 @@
-INCIDENT_STATUS_CHOICES = (
+SUPPORT_REQUEST_STATUS_CHOICES = (
     ('Submitted', 'Submitted'),
     ('Review', 'Review'),
     ('Accepted', 'Accepted'),
     ('Declined', 'Declined'),
     ('Agreed', 'Agreed'),
     ('Disagreed', 'Disagreed'),
-    ('Waiting', 'Waiting'),
+    ('Scheduled', 'Scheduled'),
     ('Working', 'Working'),
+    ('Paused', 'Paused'),
+)
+
+JOB_STATUS_CHOICES = (
+    ('Created', 'Created'),
+    ('Working', 'Working'),
+    ('Paused', 'Paused'),
     ('Completed', 'Completed'),
-    ('Evaluation', 'Evaluation'),
     ('Resolved', 'Resolved'),
     ('Unresolved', 'Unresolved'),
+)
+
+PRIORITY_CHOICES = (
+    ('High', 'High'),
+    ('Normal', 'Normal'),
+    ('Low', 'Low')
 )

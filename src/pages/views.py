@@ -2,8 +2,7 @@ import json
 from datetime import datetime
 from django.shortcuts import render, redirect
 from assets.models import Device
-from incidents.models import Incident
-from documentation.models import SystemDescription
+from assets.models import SystemDescription
 
 # Create your views here.
 def home(request):
@@ -11,10 +10,8 @@ def home(request):
         if request.user.is_technician:
             return redirect('technician_workspace')
         devices = Device.objects.filter(client=request.user.client)
-        incidents = Incident.objects.filter(client=request.user.client)
         data = {
             'devices': devices,
-            'incidents': incidents,
         }
         return render(request, 'pages/home.html', data)
     else:
@@ -26,7 +23,7 @@ def forplay(request):
     data = {
         'description': description
     }
-    # new_item = {'key5': 'value5', 'timestamp': datetime.now().__str__() }
+    # new_item = {'content': 'some text', 'timestamp': datetime.now().__str__() }
     # description.display_type.insert(0, new_item)
     # description.save()
     return render(request, template_name, data)

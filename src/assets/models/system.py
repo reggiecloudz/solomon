@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext as _
 
-from assets.models.device import Device
+from assets.models import Device
 
 class SystemDescription(models.Model):
     # [{type, brand, in_use, changed_date}]
@@ -14,6 +14,8 @@ class SystemDescription(models.Model):
     pci_slots = models.JSONField(default=list, null=True, blank=True)
     # [{type, brand, position, in_use, changed_date}]
     hard_drives = models.JSONField(default=list, null=True, blank=True)
+    # resource, url, title, description
+    documentation = models.JSONField(default=list, null=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 

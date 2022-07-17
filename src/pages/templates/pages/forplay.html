@@ -7,7 +7,7 @@
             <h1>{{ description.device.brand }}</h1>
             {% comment %} sort(reverse=true, attribute="age") {% endcomment %}
             {% for item in description.display_type|sort(attribute='timestamp') %}
-                <p>{{item.key5}}</p>
+                <p>{{item.content}}</p>
                 <p>{{item.timestamp}}</p>
             {% endfor %}
         </div>
