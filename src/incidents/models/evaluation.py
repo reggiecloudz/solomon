@@ -7,7 +7,7 @@ from incidents.models import Job
 
 class Evaluation(models.Model):
     all_passed = models.BooleanField(_("all passed"), default=False, null=False, blank=True)
-    job = models.OneToOneField(Job, on_delete=models.CASCADE, related_name="job", null=False, blank=True)
+    job = models.OneToOneField(Job, on_delete=models.CASCADE, related_name="evaluation", null=False, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 

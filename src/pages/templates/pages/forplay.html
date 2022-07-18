@@ -4,11 +4,10 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1>{{ description.device.brand }}</h1>
+            <h1>{{ job.label }}</h1>
             {% comment %} sort(reverse=true, attribute="age") {% endcomment %}
-            {% for item in description.display_type|sort(attribute='timestamp') %}
-                <p>{{item.content}}</p>
-                <p>{{item.timestamp}}</p>
+            {% for item in job.work_periods|dictsortreversed:"start" %}
+                <p>Start: {{item.start}} - Paused: {{ item.pause }}</p>
             {% endfor %}
         </div>
     </div>

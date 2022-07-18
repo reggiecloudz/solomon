@@ -7,7 +7,7 @@ from accounts.decorators import client_required, technician_required
 from accounts.forms.client import ClientSignUpForm
 from accounts.forms.technician import TechnicianSignUpForm
 from accounts.models import Client, User, Technician
-from incidents.models import Incident
+# from incidents.models import Incident
 
 class ClientSignUpView(CreateView):
     model = User
@@ -45,8 +45,8 @@ def logout_view(request):
 @login_required
 @technician_required
 def technician_workspace(request):
-    incidents = Incident.objects.all()
+    # incidents = Incident.objects.all()
     data = {
-        'incidents': incidents,
+        # 'incidents': incidents,
     }
     return render(request, 'technicians/workspace.html', data)

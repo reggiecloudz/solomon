@@ -9,7 +9,7 @@ class ProblemDefinition(models.Model):
     context = models.TextField(_("context"), null=False, blank=True)
     background = models.TextField(_("background"), null=False, blank=True)
     symptoms = models.TextField(_("symptoms"), null=False, blank=True)
-    job = models.OneToOneField(Job, on_delete=models.CASCADE, related_name="job", null=False, blank=True)
+    job = models.OneToOneField(Job, on_delete=models.CASCADE, related_name="problem_definition", null=False, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 

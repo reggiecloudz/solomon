@@ -9,7 +9,7 @@ class RootCause(models.Model):
     findings = models.TextField(_("findings"), null=True, blank=True)
     # resource, url, title, description
     documentation = models.JSONField(default=list, null=True, blank=True)
-    job = models.OneToOneField(Job, on_delete=models.CASCADE, related_name="job", null=False, blank=True)
+    job = models.OneToOneField(Job, on_delete=models.CASCADE, related_name="root_cause", null=False, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 

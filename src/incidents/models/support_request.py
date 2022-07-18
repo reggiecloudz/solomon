@@ -10,8 +10,7 @@ from questions.models import Questionnaire
 class SupportRequest(models.Model):
     problem = models.TextField(_("problem"), null=False, blank=True)
     details = models.TextField(_("details"), null=True, blank=True)
-    device = models.ForeignKey(Device, on_delete=models.CASCADE, related_name='parts', null=False, blank=True)
-    hourly_rate = models.DecimalField(_("hourly rate"), max_digits=4, decimal_places=2, null=True, blank=True)
+    device = models.ForeignKey(Device, on_delete=models.CASCADE, related_name='support_requests', null=False, blank=True)
     # resource, url, title, description
     documentation = models.JSONField(default=list, null=True, blank=True)
     # date, action

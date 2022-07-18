@@ -1,14 +1,13 @@
+from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext as _
-
-from accounts.models import Technician
 
 class Question(models.Model):
     inquiry = models.CharField(_("inquiry"), max_length=255, null=False, blank=True)
     content = models.TextField(_("content"), null=False, blank=True)
     is_answered = models.BooleanField(default=False, blank=True)
-    author = models.ForeignKey(Technician, on_delete=models.CASCADE, related_name='questions', blank=True, null=False)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='questions', blank=True, null=False)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 

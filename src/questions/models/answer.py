@@ -11,7 +11,7 @@ class Answer(models.Model):
     explanation = models.TextField(_("explanation"), null=False, blank=True)
     is_read = models.BooleanField(default=False, null=False, blank=True)
     question = models.OneToOneField(Question, on_delete=models.CASCADE, related_name="answer", blank=True, null=False)
-    author = models.ForeignKey(Technician, on_delete=models.CASCADE, related_name='answers', blank=True, null=False)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='answers', blank=True, null=False)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 

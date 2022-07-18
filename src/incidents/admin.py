@@ -9,8 +9,7 @@ from incidents.models import (
     ProblemDefinition, 
     RootCause, 
     Solution, 
-    SupportRequest, 
-    Troubleshooting
+    SupportRequest,
 )
 
 admin.site.register(Action)
@@ -22,4 +21,3 @@ admin.site.register(ProblemDefinition)
 admin.site.register(RootCause)
 admin.site.register(Solution)
 admin.site.register(SupportRequest)
-admin.site.register(Troubleshooting)

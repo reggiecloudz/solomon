@@ -1,8 +1,11 @@
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
+from decimal import Decimal
 from django.shortcuts import render, redirect
-from assets.models import Device
-from assets.models import SystemDescription
+
+from assets.models import Device, SystemDescription
+from incidents.models import Job
+from incidents.utils import difference_in_mintues, convert_minutes_to_hours, convert_cost
 
 # Create your views here.
 def home(request):
@@ -18,12 +21,29 @@ def home(request):
         return redirect('login')
 
 def forplay(request):
-    description = SystemDescription.objects.get(pk=1)
+    job = Job.objects.get(pk=1)
     template_name = 'pages/forplay.html'
     data = {
-        'description': description
+        'job': job
     }
-    # new_item = {'content': 'some text', 'timestamp': datetime.now().__str__() }
-    # description.display_type.insert(0, new_item)
-    # description.save()
+    today = datetime.now()
+    future_time = today + timedelta(hours=10)
+    work_period = {'start': today.__str__(), 'pause': '' }
+    
+    job.work_periods.insert(0, work_period)
+    
+    job.work_periods[0]["pause"] = future_time.__str__()
+    
+    # get the minutes.
+    minutes = difference_in_mintues(job.work_periods[0]["start"], job.work_periods[0]["pause"])
+
+    # convert those minutes to hours
+    job.hours_worked += convert_minutes_to_hours(minutes)
+
+    # get the cost of the job
+    cost = convert_cost(job.offer.hourly_rate, job.hours_worked)
+    
+    # job.save()
+    # print(job.hours_worked)
+    
     return render(request, template_name, data)
