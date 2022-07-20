@@ -1,37 +1,205 @@
-{% extends 'base.html' %} {% block content %}
-<div class="container">
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
   <div class="row">
     <div class="col">
-      <div class="table-responsive">
-        <table class="table caption-top">
-          <caption>
-            List of incidents
-          </caption>
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Subject</th>
-              <th scope="col">Client</th>
-              <th scope="col">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for incident in incidents %}
-            <tr>
-              <th scope="row">{{ incident.id }}</th>
-              <td>
-                <a href="{% url 'incidents:review_repair' repair.id %}"
-                  >{{ incident.subject }}</a
-                >
-              </td>
-              <td>{{ incident.client.identity.name }}</td>
-              <td>{{ incident.status }}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+      <div
+        style="
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+          border-radius: 6px;
+          padding: 1em;
+          width: 100%;
+          height: auto;
+          display: block;
+          background: rgba(250, 250, 250, 1);
+          transition: all 300ms;
+          color: #555;
+        "
+        class=""
+      >
+        <div class="clearfix">
+          <div class="float-start"><h3>Welcome {{ request.user.name }}</h3></div>
+          <div class="float-end">
+            <div class="btn-group">
+              <a href="#" class="btn btn-primary active" aria-current="page"
+                >Active link</a
+              >
+              <a href="#" class="btn btn-primary">Link</a>
+              <a href="#" class="btn btn-primary">Link</a>
+            </div>
+          </div>
+        </div>
+
+        <hr style="border-top: 1px solid #dedede" />
+        <div class="row">
+          <div class="col mb-3 d-flex align-items-stretch">
+            {% include 'partials/_conversionratecard.html' %}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 mb-3 d-flex align-items-stretch">
+            {% include 'partials/_earningscard.html' %}
+          </div>
+          <div class="col-lg-6 mb-3 d-flex align-items-stretch">
+            {% include 'partials/_expensescard.html' %}
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-{% endblock content %}
+{% endblock %}
+
+{% block javascript %}
+<script src="{% static 'libs/chartjs/src/chart.min.js' %}"></script>
+<script>
+  const crCtx = document.getElementById('crChart').getContext('2d');
+  const earningsCtx = document.getElementById('earningsChart').getContext('2d');
+  const expensesCtx = document.getElementById('expensesChart').getContext('2d');
+
+  const crData = {
+    labels: [
+      'January',
+      'February',
+      'March',
+      'April'
+    ],
+    datasets: [
+      {
+        type: 'line',
+        label: 'Conversion Rate',
+        data: [9, 21, 25, 42],
+        fill: false,
+        borderColor: 'rgb(111,78,124)'
+      },
+      {
+        type: 'bar',
+        label: 'Non-Conversions',
+        data: [10, 20, 30, 40],
+        borderColor: 'rgb(61,133,165)',
+        backgroundColor: 'rgba(61,133,165, 1)'
+      },
+      {
+        type: 'bar',
+        label: 'Conversions',
+        data: [8, 22, 26, 44],
+        borderColor: 'rgb(246,200,96)',
+        backgroundColor: 'rgba(246,200,96, 1)'
+      }
+    ]
+  };
+
+  const crChart = new Chart(crCtx, {
+    data: crData,
+    options: {
+      plugins: {
+        title: {
+          display: true,
+          text: 'Conversions Over Time'
+        },
+      },
+      responsive: true,
+      scales: {
+        x: {
+          stacked: true,
+        },
+        y: {
+          stacked: true,
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  const earningsData = {
+    labels: [
+      'January',
+      'February',
+      'March',
+      'April'
+    ],
+    datasets: [
+      {
+        type: 'bar',
+        label: 'Sales Revenue',
+        data: [10, 26, 30, 50],
+        borderColor: 'rgb(61,133,165)',
+        backgroundColor: 'rgba(61,133,165, 1)'
+      },
+      {
+        type: 'bar',
+        label: 'Gross Profit',
+        data: [8, 22, 26, 44],
+        borderColor: 'rgb(246,200,96)',
+        backgroundColor: 'rgba(246,200,96, 1)'
+      }
+    ]
+  };
+
+  const earningsChart = new Chart(earningsCtx, {
+    data: earningsData,
+    options: {
+      plugins: {
+        title: {
+          display: true,
+          text: 'Earnings Chart'
+        },
+      },
+      responsive: true,
+      scales: {
+        x: {
+          stacked: true,
+        },
+        y: {
+          stacked: true,
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  const expensesData = {
+    datasets: [
+      {
+        labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
+        data: [78, 71, 89, 27, 75],
+        backgroundColor: [
+          'rgb(228,92,131)', 
+          'rgb(238,156,63)', 
+          'rgb(248,204,86)', 
+          'rgb(100,193,192)', 
+          'rgb(67,163,236)'
+        ]
+      },
+    ]
+  };
+  const expensesChart = new Chart(expensesCtx, {
+    type: 'pie',
+    data: expensesData,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+          labels: {
+            generateLabels: (chart) => {
+              const datasets = chart.data.datasets;
+              return datasets[0].data.map((data, i) => ({
+                text: `${datasets[0].labels[i]} ${data}`,
+                fillStyle: datasets[0].backgroundColor[i],
+              }))
+            }
+          }
+        },
+        title: {
+          display: true,
+          text: 'Expenses Chart'
+        }
+      }
+    },
+  });
+
+</script>
+{% endblock javascript %}
