@@ -13,6 +13,8 @@ class SupportRequest(models.Model):
     device = models.ForeignKey(Device, on_delete=models.CASCADE, related_name='support_requests', null=False, blank=True)
     # resource, url, title, description
     documentation = models.JSONField(default=list, null=True, blank=True)
+    # { hourly_rate: 22, scheduled_start_date: date, services: [], summary: "", agreed: false, comments: ""}
+    offer = models.JSONField(default=dict, null=True, blank=True)
     # date, action
     followup_dates = models.JSONField(default=list, null=True, blank=True)
     client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name='support_requests', null=False, blank=True)

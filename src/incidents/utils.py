@@ -23,6 +23,9 @@ def convert_minutes_to_hours(mins):
 def convert_cost(rate, hours):
     return rate * Decimal.from_float(hours)
 
+def get_percentage_from_list(the_list, key, value):
+    return (len([ele for ele in the_list if ele[key] == value])) / len(the_list) * 100
+
 # test data
 today = datetime.datetime.now()
 future_time = today + datetime.timedelta(hours=8)
@@ -50,3 +53,10 @@ hours = convert_minutes_to_hours(minutes)
 cost = convert_cost(rate, hours)
 
 # print(cost)
+
+another_list = [
+    { "label": "task 1", "status": "In progress" },
+    { "label": "task 2", "status": "Complete" }
+]
+
+# print(get_percentage_from_list(another_list, "label", "task 2"))

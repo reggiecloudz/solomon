@@ -16,8 +16,6 @@ class Job(models.Model):
     support_request = models.OneToOneField(SupportRequest, on_delete=models.CASCADE, related_name="job", null=False, blank=True)
     # resource, url, title, description
     documentation = models.JSONField(default=list, null=True, blank=True)
-    # { hourly_rate: 22, scheduled_start_date: date, services: [], summary: "", agreed: false, comments: ""}
-    offer = models.JSONField(default=dict, null=True, blank=True)
     # [started, paused (timestamps), last_url] ref forplay
     work_periods = models.JSONField(_("work periods"), default=list, null=True, blank=True)
     technician = models.ForeignKey(Technician, on_delete=models.CASCADE, related_name="jobs", null=False, blank=True)
