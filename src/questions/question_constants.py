@@ -94,4 +94,9 @@ INCIDENT_PROBING_QUESTION = [
         "question": "Would like any system improvements or upgrades?",
         "description": "If the customer requires or desires any system improvements."
     },
+    { 
+        "order": 20, 
+        "question": "To better understand what's going on in your system we will need information from your system. Are you willing to provide these details or are do grant permission for me to catalog the system on your behave?",
+        "description": "Ask to see if the client is comfortable with having there system cataloged to get a description of the system."
+    },
 ]

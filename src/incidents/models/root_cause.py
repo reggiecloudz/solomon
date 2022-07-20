@@ -7,8 +7,6 @@ from incidents.models.job import Job
 class RootCause(models.Model):
     cause = models.CharField(_("cause"), max_length=144, null=False, blank=True)
     findings = models.TextField(_("findings"), null=True, blank=True)
-    # resource, url, title, description
-    documentation = models.JSONField(default=list, null=True, blank=True)
     job = models.OneToOneField(Job, on_delete=models.CASCADE, related_name="root_cause", null=False, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)

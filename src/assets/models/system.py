@@ -1,12 +1,13 @@
+from email.policy import default
 from django.db import models
+from django.forms import JSONField
 from django.utils.translation import gettext as _
 
 from assets.models import Device
 
-class SystemDescription(models.Model):
+class SystemSnapshot(models.Model):
     # [{type, brand, in_use, changed_date}]
-    device = models.OneToOneField(Device, on_delete=models.CASCADE, related_name='system_descriptions', null=False, blank=True)
-    architecture = models.CharField(max_length=20, null=True, blank=True)
+    device = models.ForeignKey(Device, on_delete=models.CASCADE, related_name='system_snapshots', null=False, blank=True)
     display_type = models.JSONField(default=list, null=True, blank=True)
     operating_system = models.JSONField(default=list, null=False, blank=True)
     processor_type = models.CharField(max_length=144, null=True, blank=True)
@@ -16,6 +17,8 @@ class SystemDescription(models.Model):
     hard_drives = models.JSONField(default=list, null=True, blank=True)
     # resource, url, title, description
     documentation = models.JSONField(default=list, null=True, blank=True)
+    benchmarks = models.JSONField(default=dict, null=True, blank=True)
+    changes = models.JSONField(default=list, null=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 

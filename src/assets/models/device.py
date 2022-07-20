@@ -7,7 +7,7 @@ class Device(models.Model):
     brand = models.CharField(max_length=100, null=False, blank=True)
     model = models.CharField(max_length=100, null=False, blank=True)
     computer_type = models.CharField(max_length=144, null=False, blank=True)
-    about = models.TextField(null=True, blank=True)
+    comments = models.TextField(null=True, blank=True)
     client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name='devices', null=False, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)

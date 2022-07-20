@@ -1,0 +1,32 @@
+1. []
+  Client add a new device
+2. []
+  Client submits a support request
+3. []
+  Tech reviews request
+4. []
+  Tech accepts request
+5. []
+  Tech sends offer
+6. []
+  Tech creates job from request (if accepted)
+7. []
+  Tech sets up chat appointment with client
+8. []
+  Tech sets up in-person appointment with client
+9. []
+  Tech reviews all information gathered so far, and starts working on the problem definition
+10. []
+  Tech determines the root cause
+11. []
+  Tech develops solutions
+12. []
+  Tech selects a solution
+13. []
+  Tech plans a implementation
+14. []
+  Tech evaluates the outcome
+15. []
+  Tech sets up return appointment
+16. []
+  Tech follow-up

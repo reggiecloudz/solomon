@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext as _
 
-from assets.models import Device
+from assets.models import SystemSnapshot
 
 class Update(models.Model):
     publisher = models.CharField(_("publisher"), max_length=75, null=False, blank=True)
@@ -11,7 +11,7 @@ class Update(models.Model):
     description = models.TextField(null=True, blank=True)
     # resource, url, title, description
     documentation = models.JSONField(default=list, null=True, blank=True)
-    device = models.ForeignKey(Device, on_delete=models.CASCADE, related_name='updates', null=False, blank=True)
+    snapshot = models.ForeignKey(SystemSnapshot, on_delete=models.CASCADE, related_name='updates', null=False, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     

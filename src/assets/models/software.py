@@ -1,9 +1,8 @@
-from email.policy import default
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext as _
 
-from assets.models import Device
+from assets.models import SystemSnapshot
 
 class Software(models.Model):
     publisher = models.CharField(_("publisher"), max_length=75, null=False, blank=True)
@@ -12,8 +11,9 @@ class Software(models.Model):
     type = models.CharField(_("type"), max_length=50, null=False, blank=True)
     license_key = models.CharField(_("license key"), max_length=144, null=True, blank=True)
     location = models.CharField(_("location"), max_length=144, null=False, blank=True)
-    device = models.ForeignKey(Device, on_delete=models.CASCADE, related_name="software", null=False, blank=True)
+    snapshot = models.ForeignKey(SystemSnapshot, on_delete=models.CASCADE, related_name="software", null=False, blank=True)
     cost = models.DecimalField(_("cost"), max_digits=5, decimal_places=2, null=True, blank=True)
+    is_installed = models.BooleanField(null=False, blank=True)
     # resource, url, title, description
     documentation = models.JSONField(default=list, null=True, blank=True)
     updated = models.DateTimeField(auto_now=True)

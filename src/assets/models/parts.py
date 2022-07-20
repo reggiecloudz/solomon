@@ -1,13 +1,13 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext as _
-from assets.models import Device, device
+from assets.models import SystemSnapshot
 
 
 class Part(models.Model):
     brand = models.CharField(max_length=100, null=False, blank=True)
     model = models.CharField(max_length=100, null=False, blank=True)
-    device = models.ForeignKey(Device, on_delete=models.CASCADE, related_name='parts', null=False, blank=True)
+    snapshot = models.ForeignKey(SystemSnapshot, on_delete=models.CASCADE, related_name='parts', null=False, blank=True)
     cost = models.DecimalField(_("cost"), max_digits=5, decimal_places=2, null=True, blank=True)
     # resource, url, title, description
     documentation = models.JSONField(default=list, null=True, blank=True)

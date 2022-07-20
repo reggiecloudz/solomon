@@ -11,8 +11,6 @@ class SupportRequest(models.Model):
     problem = models.TextField(_("problem"), null=False, blank=True)
     details = models.TextField(_("details"), null=True, blank=True)
     device = models.ForeignKey(Device, on_delete=models.CASCADE, related_name='support_requests', null=False, blank=True)
-    # resource, url, title, description
-    documentation = models.JSONField(default=list, null=True, blank=True)
     # { hourly_rate: 22, scheduled_start_date: date, services: [], summary: "", agreed: false, comments: ""}
     offer = models.JSONField(default=dict, null=True, blank=True)
     # date, action

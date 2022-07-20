@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from decimal import Decimal
 from django.shortcuts import render, redirect
 
-from assets.models import Device, SystemDescription
+from assets.models import Device, SystemSnapshot
 from incidents.models import Job
 from incidents.utils import difference_in_mintues, convert_minutes_to_hours, convert_cost
 
