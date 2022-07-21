@@ -4,7 +4,6 @@ from django.contrib.auth.decorators import login_required
 from assets.forms import DeviceForm
 from accounts.decorators import client_required
 
-# Create your views here.
 @login_required
 @client_required
 def add_device(request):

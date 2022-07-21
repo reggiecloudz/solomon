@@ -1,5 +1,12 @@
 1. []
   Client add a new device
+    [] create a form to create that adds a new device
+    [] create a view that holds the new device form and its post method
+    [] within the the view don't commit the form. assign the client to the device and a system snapshot
+    [] save the data
+    [] create the html template
+    [] set up the url
+    [] test and evaluate
 2. []
   Client submits a support request
 3. []
