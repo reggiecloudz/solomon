@@ -8,31 +8,31 @@
     - curl -X POST -H "Content-Type: application/json" http://127.0.0.1:800/api/devices/client/{pk}/ -d "{\"brand\":\"Dell\",\"model\":\"Inspiron 15\",\"computer_type\":\"Laptop\"}"
 2. [x]
   Client submits a support request
-3. []
+3. [x]
   Tech reviews request
-4. []
+4. [x]
   Tech accepts request
-5. []
+5. [x]
   Tech sends offer
-6. []
+6. [x]
   Tech creates job from request (if accepted)
-7. []
+7. [x]
   Tech sets up chat appointment with client
-8. []
+8. [x]
   Tech sets up in-person appointment with client
 9. []
   Tech reviews all information gathered so far, and starts working on the problem definition
-10. []
+10. [x]
   Tech determines the root cause
-11. []
+11. [x]
   Tech develops solutions
-12. []
+12. [x]
   Tech selects a solution
-13. []
+13. [x]
   Tech plans a implementation
-14. []
+14. [x]
   Tech evaluates the outcome
-15. []
+15. [x]
   Tech sets up return appointment
 16. []
   Tech follow-up

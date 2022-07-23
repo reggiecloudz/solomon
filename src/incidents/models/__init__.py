@@ -5,7 +5,7 @@ from .implementation import Implementation
 from .phase import Phase
 from .action import Action
 from .appointment import Appointment
-from .evaluation import Evaluation, EvaluationTest
+from .evaluation import Evaluation
 from .problem_definition import ProblemDefinition
 from .root_cause import RootCause
 

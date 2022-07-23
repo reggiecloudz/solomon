@@ -6,6 +6,7 @@ from incidents.models import Solution
 
 class Implementation(models.Model):
     plan = models.TextField(_("plan"), null=False, blank=True)
+    procedures = models.JSONField(default=list, null=True, blank=True)
     start_date = models.DateTimeField(_("start date"), null=True, blank=True)
     documentation = models.JSONField(default=list, null=True, blank=True)
     tools = models.JSONField(default=list, null=True, blank=True)

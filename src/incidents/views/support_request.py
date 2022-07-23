@@ -98,3 +98,39 @@ def change_support_request_status(request, pk):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PATCH'])
+def make_offer(request, pk):
+    try:
+        support_request = SupportRequest.objects.get(pk=pk)
+    except SupportRequest.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'PATCH':
+        data = {
+            "offer": request.data.get("offer")
+        }
+        serializer = SupportRequestSerializer(support_request, data=data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PATCH'])
+def offer_response(request, pk):
+    try:
+        support_request = SupportRequest.objects.get(pk=pk)
+    except SupportRequest.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'PATCH':
+        data = {
+            "response": request.data.get("response")
+        }
+        serializer = SupportRequestSerializer(support_request, data=data, partial=True)
+        if serializer.is_valid():
+            support_request.offer["response"] = data['response']
+            support_request.save()
+            # serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
