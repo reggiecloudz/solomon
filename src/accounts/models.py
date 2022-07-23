@@ -40,7 +40,7 @@ class User(AbstractUser):
     first_name = None
     last_name = None
 
-    id = models.UUIDField(primary_key=True, unique=True,
+    id = models.CharField(max_length=36, primary_key=True, unique=True,
                           default=uuid.uuid4, editable=False)
     email = models.EmailField(_('email address'), unique=True)
     name = models.CharField(_("name"), max_length=255, null=False, blank=True)
@@ -59,7 +59,7 @@ class User(AbstractUser):
         ordering = ["-id"]
 
 class Client(models.Model):
-    id = models.UUIDField(primary_key=True, unique=True,
+    id = models.CharField(max_length=36, primary_key=True, unique=True,
                           default=uuid.uuid4, editable=False)
     identity = models.OneToOneField(User, on_delete=models.CASCADE, related_name="client", null=False, blank=True)
     updated = models.DateTimeField(auto_now=True)
@@ -76,7 +76,7 @@ class Client(models.Model):
         return reverse("client_detail", kwargs={"pk": self.pk})
 
 class Technician(models.Model):
-    id = models.UUIDField(primary_key=True, unique=True,
+    id = models.CharField(max_length=36, primary_key=True, unique=True,
                           default=uuid.uuid4, editable=False)
     identity = models.OneToOneField(User, on_delete=models.CASCADE, related_name="technician", null=False, blank=True)
     # [{'service', 'rate',}]

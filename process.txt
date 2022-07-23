@@ -1,13 +1,12 @@
-1. []
-  Client add a new device
-    [] create a form to create that adds a new device
-    [] create a view that holds the new device form and its post method
-    [] within the the view don't commit the form. assign the client to the device and a system snapshot
-    [] save the data
-    [] create the html template
-    [] set up the url
-    [] test and evaluate
-2. []
+1. [x]
+  Client add a new device 
+    [x] create a serializer to create that adds a new device
+    [x] create a view that holds the new device serializer and its post method
+    [x] save the data
+    [x] set up the url
+    [x] test and evaluate
+    - curl -X POST -H "Content-Type: application/json" http://127.0.0.1:800/api/devices/client/{pk}/ -d "{\"brand\":\"Dell\",\"model\":\"Inspiron 15\",\"computer_type\":\"Laptop\"}"
+2. [x]
   Client submits a support request
 3. []
   Tech reviews request
