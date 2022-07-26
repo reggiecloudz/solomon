@@ -1,1 +1,23 @@
-<p>edit-device works!</p>
+<div class="container">
+    <div class="row">
+        <!-- Form -->
+        <div class="col-md-12">
+            <h3>Edit Device</h3>
+            <form [formGroup]="updateDeviceForm" (ngSubmit)="submitForm()" novalidate>
+                <div class="mb-3">
+                    <label>Brand</label>
+                    <input type="text" formControlName="brand" class="form-control" maxlength="20">
+                </div>
+                <div class="mb-3">
+                    <label>Model</label>
+                    <input type="text" formControlName="model" class="form-control" maxlength="20">
+                </div>
+                <div class="mb-3">
+                    <label>Device Type</label>
+                    <input type="text" formControlName="computer_type" class="form-control" maxlength="20">
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+        </div>
+    </div>
+</div>

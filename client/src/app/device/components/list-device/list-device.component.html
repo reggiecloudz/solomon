@@ -1,1 +1,37 @@
-<p>list-device works!</p>
+<div class="container">
+    <div class="row">
+        <!-- Device table -->
+        <div class="col-md-12">
+            <div class="inner">
+                <h3>My Devices</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Brand</th>
+                            <th scope="col">Model</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Open Requests</th>
+                            <th scope="col">Requests</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let device of DeviceList">
+                            <th scope="row">{{device.id}}</th>
+                            <td>{{device.brand}}</td>
+                            <td>{{device.model}}</td>
+                            <td>{{ device.computer_type }}</td>
+                            <td>{{ device.request_count }}</td>
+                            <td>{{ device.open_requests }}</td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['/edit-device/', device.id]">Edit</button>
+                                <button type="button" class="btn btn-danger btn-sm" (click)="deleteDevice(device)">Remove</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

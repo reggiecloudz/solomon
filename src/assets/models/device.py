@@ -22,3 +22,11 @@ class Device(models.Model):
 
     def get_absolute_url(self):
         return reverse("device_detail", kwargs={"pk": self.pk})
+
+    @property
+    def open_requests(self):
+        return self.support_requests.filter(is_open=True).count()
+
+    @property
+    def request_count(self):
+        return self.support_requests.count()

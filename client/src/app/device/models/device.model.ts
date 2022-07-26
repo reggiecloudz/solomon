@@ -2,7 +2,8 @@ export class Device {
     id!: number;
     brand!: string;
     model!: string;
-    openRequest!: number;
+    open_request!: number;
+    request_count!: number;
     client!: string;
     computer_type!: string;
 }

@@ -51,6 +51,7 @@ def device_detail(request, pk):
 
     if request.method == 'GET':
         serializer = DeviceSerializer(device)
+        print(device.request_count)
         return Response(serializer.data)
 
     elif request.method == 'PUT':

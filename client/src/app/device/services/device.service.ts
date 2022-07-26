@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
 import { Device } from '../models/device.model';
+import users from '../../users';
 
 @Injectable({
   providedIn: 'root'
@@ -23,10 +24,16 @@ export class DeviceService {
   // POST
   CreateDevice(data: any): Observable<Device> {
     return this.http.post<Device>(
-      `${this.baseUrl}api/devices/`,
+      `${this.baseUrl}api/devices/client/${users.getLuluWright().id}/`,
       JSON.stringify(data),
       this.httpOptions
     ).pipe(retry(1), catchError(this.errorHandler));
+  }
+
+  // GET
+  GetClientDevices(): Observable<Device>{
+    return this.http.get<Device>(`${this.baseUrl}api/devices/client/${users.getLuluWright().id}/`)
+      .pipe(retry(1), catchError(this.errorHandler));
   }
 
   // GET
