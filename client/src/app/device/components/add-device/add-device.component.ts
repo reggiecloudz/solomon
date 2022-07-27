@@ -15,7 +15,7 @@ export class AddDeviceComponent implements OnInit {
   DeviceArr: any = [];
 
   ngOnInit() {
-    this.addIssue();
+    this.addDevice();
   }
   constructor(
     public fb: FormBuilder,
@@ -23,7 +23,7 @@ export class AddDeviceComponent implements OnInit {
     private router: Router,
     public deviceService: DeviceService
   ) {}
-  addIssue() {
+  addDevice() {
     this.deviceForm = this.fb.group({
       brand: [''],
       model: [''],
