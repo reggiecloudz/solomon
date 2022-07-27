@@ -9,7 +9,7 @@ from .service_orders import (
     offer_response
     )
 
-from .jobs import job_collection, job_detail
+from .jobs import job_collection, job_detail, sevice_order_job_collect
 
 from .appointments import appointment_collection, appointment_detail, appointment_response
 

@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeviceModule } from './device/device.module';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { ServiceOrderModule } from './service-order/service-order.module';
+import { JobModule } from './job/job.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ServiceOrderModule } from './service-order/service-order.module';
     ReactiveFormsModule,
     DeviceModule,
     ServiceOrderModule,
+    JobModule
   ],
   providers: [],
   bootstrap: [AppComponent]

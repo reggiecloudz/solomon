@@ -111,8 +111,6 @@
             "  add${1:ModelName}() {",
             "    this.${2:VariableName}Form = this.fb.group({",
             "      label: [''],",
-            "      model: [''],",
-            "      computer_type: [''],",
             "    });",
             "  }",
             "  submitForm() {",
@@ -217,79 +215,6 @@
             "  }",
             "}",
             ""
-        ]
-    },
-    "ANGULAR_REST_SERVICE_ADD_TEMPLATE": {
-        "prefix": "ng_rest_service_add_template",
-        "body": [
-            "<div class='container'>",
-            "    <div class='row'>",
-            "        <div class='col-12'>",
-            "            <h3>Add ${1:ModelName}</h3>",
-            "            <form [formGroup]=\"${2:VariableName}Form\" (ngSubmit)=\"submitForm()\" novalidate>",
-            "                <div class='mb-3'>",
-            "                    <label>Label</label>",
-            "                    <input type='text' formControlName=\"label\" class='form-control'>",
-            "                </div>",
-            "                <button type='submit' class='btn btn-primary'>Submit</button>",
-            "            </form>",
-            "        </div>",
-            "    </div>",
-            "</div>"
-        ]
-    },
-    "ANGULAR_REST_SERVICE_LIST_TEMPLATE": {
-        "prefix": "ng_rest_service_list_template",
-        "body": [
-            "<div class='container'>",
-            "    <div class='row'>",
-            "        <!-- ${1:ModelName} table -->",
-            "        <div class='col-md-12'>",
-            "            <div class='table-responsive'>",
-            "                <h3>My ${1:ModelName}s</h3>",
-            "                <table class='table table-bordered'>",
-            "                    <thead>",
-            "                        <tr>",
-            "                            <th scope='col'>#</th>",
-            "                            <th scope='col'>Label</th>",
-            "                            <th scope='col'>Actions</th>",
-            "                        </tr>",
-            "                    </thead>",
-            "                    <tbody>",
-            "                        <tr *ngFor=\"let ${2:VariableName} of ${1:ModelName}List\">",
-            "                            <th scope='row'>{{${2:VariableName}.id}}</th>",
-            "                            <td>{{${2:VariableName}.label}}</td>",
-            "                            <td>",
-            "                                <button type='button' class='btn btn-success btn-sm' [routerLink]=\"['/edit-${2:VariableName}/', ${2:VariableName}.id]\">Edit</button>",
-            "                                <button type='button' class='btn btn-danger btn-sm' (click)=\"delete${1:ModelName}(${2:VariableName})\">Remove</button>",
-            "                            </td>",
-            "                        </tr>",
-            "                    </tbody>",
-            "                </table>",
-            "            </div>",
-            "        </div>",
-            "    </div>",
-            "</div>"
-        ]
-    },
-    "ANGULAR_REST_SERVICE_EDIT_TEMPLATE": {
-        "prefix": "ng_rest_service_edit_template",
-        "body": [
-            "<div class='container'>",
-            "    <div class='row'>",
-            "        <!-- Form -->",
-            "        <div class='col-md-12'>",
-            "            <h3>Edit ${1:ModelName}</h3>",
-            "            <form [formGroup]=\"update${1:ModelName}Form\" (ngSubmit)=\"submitForm()\" novalidate>",
-            "                <div class='mb-3'>",
-            "                    <label>Label</label>",
-            "                    <input type='text' formControlName=\"label\" class='form-control'>",
-            "                </div>",
-            "                <button type='submit' class='btn btn-primary'>Update</button>",
-            "            </form>",
-            "        </div>",
-            "    </div>",
-            "</div>"
         ]
     }
 }

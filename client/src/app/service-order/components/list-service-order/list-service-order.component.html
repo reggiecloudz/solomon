@@ -17,6 +17,7 @@
                             <th scope="row">{{order.id}}</th>
                             <td>{{order.problem}}</td>
                             <td>
+                                <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['/jobs/service-order/', order.id]">Book</button>
                                 <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['/edit-service-order/', order.id]">Edit</button>
                                 <button type="button" class="btn btn-danger btn-sm" (click)="deleteServiceOrder(order)">Remove</button>
                             </td>

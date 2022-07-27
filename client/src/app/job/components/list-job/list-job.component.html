@@ -1,0 +1,29 @@
+<div class='container'>
+    <div class='row'>
+        <!-- Job table -->
+        <div class='col-md-12'>
+            <div class='table-responsive'>
+                <h3>My Jobs</h3>
+                <table class='table table-bordered'>
+                    <thead>
+                        <tr>
+                            <th scope='col'>#</th>
+                            <th scope='col'>Label</th>
+                            <th scope='col'>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let job of JobList">
+                            <th scope='row'>{{job.id}}</th>
+                            <td>{{job.label}}</td>
+                            <td>
+                                <button type='button' class='btn btn-success btn-sm' [routerLink]="['/edit-job/', job.id]">Edit</button>
+                                <button type='button' class='btn btn-danger btn-sm' (click)="deleteJob(job)">Remove</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

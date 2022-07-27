@@ -2,28 +2,43 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
-from incidents.models import Job
+from incidents.models import Job, ServiceOrder
 from incidents.serializers import JobSerializer
 
 # /api/jobs/
 @api_view(['GET', 'POST'])
-def job_collection(request):
+def sevice_order_job_collect(request, pk):
+    try:
+        service_order = ServiceOrder.objects.get(pk=pk)
+    except ServiceOrder.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
     if request.method == 'GET':
-        jobs = Job.objects.all()
-        serializer = JobSerializer(jobs, many=True)
+        job = Job.objects.get(service_order=service_order)
+        serializer = JobSerializer(job, many=True)
         return Response(serializer.data)
     elif request.method == 'POST':
         data = {
             "label": request.data.get("label"),
-            "priority": request.data.get("priority"),
-            "service_order": request.data.get("service_order"),
-            "technician": request.data.get("technician"), # 4298cec0-1862-4638-bd9d-7b70b387753b
+            "priority": "Normal",
+            "service_order": service_order.pk,
+            "technician": service_order.technician.pk,
         }
         serializer = JobSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# /api/jobs/
+@api_view(['GET'])
+def job_collection(request):
+    if request.method == 'GET':
+        jobs = Job.objects.all()
+        serializer = JobSerializer(jobs, many=True)
+        return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 # /api/jobs/{pk}
 @api_view(['GET', 'PATCH', 'PUT', 'DELETE'])
