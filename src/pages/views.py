@@ -41,7 +41,7 @@ def forplay(request):
     job.hours_worked += convert_minutes_to_hours(minutes)
 
     # get the cost of the job
-    cost = convert_cost(job.support_request.offer.hourly_rate, job.hours_worked)
+    cost = convert_cost(job.service_order.offer.hourly_rate, job.hours_worked)
     
     # job.save()
     # print(job.hours_worked)

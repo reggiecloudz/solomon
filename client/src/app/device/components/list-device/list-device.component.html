@@ -25,8 +25,9 @@
                             <td>{{ device.request_count }}</td>
                             <td>{{ device.open_requests }}</td>
                             <td>
+                                <button type="button" class="btn btn-success btn-sm" [routerLink]="['/devices/', device.id, 'add-service-order']">Order</button>
                                 <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['/edit-device/', device.id]">Edit</button>
-                                <button type="button" class="btn btn-danger btn-sm" (click)="deleteDevice(device)">Remove</button>
+                                <button type="button" class="btn btn-danger btn-sm move-right" (click)="deleteDevice(device)">Remove</button>
                             </td>
                         </tr>
                     </tbody>

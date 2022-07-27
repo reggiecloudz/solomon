@@ -1,10 +1,10 @@
-from .support_request import (
-    device_support_request_collection,
+from .service_orders import (
+    device_service_order_collection,
     offer_response, 
-    support_request_detail,
-    support_request_collection,
-    client_support_request_collection,
-    change_support_request_status,
+    service_order_detail,
+    service_order_collection,
+    client_service_order_collection,
+    change_service_order_status,
     make_offer,
     offer_response
     )

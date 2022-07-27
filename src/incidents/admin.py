@@ -9,7 +9,7 @@ from incidents.models import (
     ProblemDefinition, 
     RootCause, 
     Solution, 
-    SupportRequest,
+    ServiceOrder,
 )
 
 admin.site.register(Action)
@@ -20,4 +20,4 @@ admin.site.register(Job)
 admin.site.register(ProblemDefinition)
 admin.site.register(RootCause)
 admin.site.register(Solution)
-admin.site.register(SupportRequest)
+admin.site.register(ServiceOrder)

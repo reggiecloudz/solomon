@@ -1,4 +1,4 @@
-from .support_request import SupportRequest
+from .service_order import ServiceOrder
 from .job import Job
 from .solution import Solution
 from .implementation import Implementation

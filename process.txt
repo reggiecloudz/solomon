@@ -1,13 +1,7 @@
 1. [x]
-  Client add a new device 
-    [x] create a serializer to create that adds a new device
-    [x] create a view that holds the new device serializer and its post method
-    [x] save the data
-    [x] set up the url
-    [x] test and evaluate
-    - curl -X POST -H "Content-Type: application/json" http://127.0.0.1:800/api/devices/client/{pk}/ -d "{\"brand\":\"Dell\",\"model\":\"Inspiron 15\",\"computer_type\":\"Laptop\"}"
+  Client add a new device
 2. [x]
-  Client submits a support request
+  Client submits a service order
 3. [x]
   Tech reviews request
 4. [x]

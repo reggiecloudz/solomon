@@ -6,6 +6,7 @@ from assets.models import Device
 class DeviceSerializer(serializers.ModelSerializer):
     open_requests = serializers.ReadOnlyField()
     request_count = serializers.ReadOnlyField()
+    owner = serializers.ReadOnlyField()
 
     class Meta:
         model = Device

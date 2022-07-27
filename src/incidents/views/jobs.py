@@ -16,7 +16,7 @@ def job_collection(request):
         data = {
             "label": request.data.get("label"),
             "priority": request.data.get("priority"),
-            "support_request": request.data.get("support_request"),
+            "service_order": request.data.get("service_order"),
             "technician": request.data.get("technician"), # 4298cec0-1862-4638-bd9d-7b70b387753b
         }
         serializer = JobSerializer(data=data)

@@ -25,8 +25,16 @@ class Device(models.Model):
 
     @property
     def open_requests(self):
-        return self.support_requests.filter(is_open=True).count()
+        return self.service_orders.filter(is_open=True).count()
 
     @property
     def request_count(self):
-        return self.support_requests.count()
+        return self.service_orders.count()
+
+    @property
+    def owner(self):
+        return {
+            "id": self.client.identity.pk,
+            "name": self.client.identity.name,
+            "email": self.client.identity.email,
+        }

@@ -3,13 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
-import { Device } from '../models/device.model';
+import { ServiceOrder } from '../models/service-order.model';
 import users from '../../shared/users';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class DeviceService {
+export class ServiceOrderService {
   baseUrl = 'http://127.0.0.1:8000/api';
 
   constructor(private http: HttpClient) { }
@@ -22,44 +23,43 @@ export class DeviceService {
   };
 
   // POST
-  CreateDevice(data: any): Observable<Device> {
-    return this.http.post<Device>(
-      `${this.baseUrl}/devices/client/${users.getLuluWright().id}/`,
+  CreateServiceOrder(data: any, id: number): Observable<ServiceOrder> {
+    return this.http.post<ServiceOrder>(
+      `${this.baseUrl}/service-orders/device/${id}/`,
       JSON.stringify(data),
       this.httpOptions
     ).pipe(retry(1), catchError(this.errorHandler));
   }
 
   // GET
-  GetClientDevices(): Observable<Device>{
-    return this.http.get<Device>(`${this.baseUrl}/devices/client/${users.getLuluWright().id}/`)
+  GetDeviceServiceOrders(id: number): Observable<ServiceOrder>{
+    return this.http.get<ServiceOrder>(`${this.baseUrl}/service-orders/device/${id}/`,)
       .pipe(retry(1), catchError(this.errorHandler));
   }
 
   // GET
-  GetDevice(id: number): Observable<Device> {
-    return this.http.get<Device>(`${this.baseUrl}/devices/${id}/`)
+  GetServiceOrder(id: number): Observable<ServiceOrder> {
+    return this.http.get<ServiceOrder>(`${this.baseUrl}/service-orders/${id}/`)
       .pipe(retry(1), catchError(this.errorHandler));
   }
 
   // GET
-  GetDevices(): Observable<Device> {
-    return this.http.get<Device>(`${this.baseUrl}api/devices/`)
+  GetServiceOrders(): Observable<ServiceOrder> {
+    return this.http.get<ServiceOrder>(`${this.baseUrl}/service-orders/`)
       .pipe(retry(1), catchError(this.errorHandler));
   }
 
-  // PUT
-  UpdateDevice(id: number, data: any): Observable<Device> {
-    return this.http.put<Device>(
-      `${this.baseUrl}api/devices/${id}/`,
+  UpdateServiceOrder(id: number, data: any): Observable<ServiceOrder> {
+    return this.http.put<ServiceOrder>(
+      `${this.baseUrl}/service-orders/${id}/`,
       JSON.stringify(data),
       this.httpOptions
     ).pipe(retry(1), catchError(this.errorHandler));
   }
 
   // DELETE
-  DeleteDevice(id: number): Observable<Device> {
-    return this.http.delete<Device>(`${this.baseUrl}api/devices/${id}/`, this.httpOptions)
+  DeleteServiceOrder(id: number): Observable<ServiceOrder> {
+    return this.http.delete<ServiceOrder>(`${this.baseUrl}/service-orders/${id}/`, this.httpOptions)
       .pipe(retry(1), catchError(this.errorHandler));
   }
 

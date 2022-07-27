@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3>Add Service Order</h3>
+            <form [formGroup]="serviceOrderForm" (ngSubmit)="submitForm()" novalidate>
+                <div class="mb-3">
+                    <label>Problem</label>
+                    <textarea type="text" formControlName="problem" class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

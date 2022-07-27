@@ -16,7 +16,7 @@ def appointment_collection(request):
         data = {
             "label": request.data.get("label"),
             "appointment_date": request.data.get("appointment_date"),
-            "support_request": request.data.get("support_request"),
+            "service_order": request.data.get("service_order"),
         }
         serializer = AppointmentSerializer(data=data)
         if serializer.is_valid():

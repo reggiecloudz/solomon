@@ -1,4 +1,4 @@
-from .support_requests import SupportRequestSerializer
+from .service_orders import ServiceOrderSerializer
 from .jobs import JobSerializer
 from .appointments import AppointmentSerializer
 from .problem_definitions import ProblemDefinitionSerializer
